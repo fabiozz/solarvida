@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SolarVida — Simulador de Economia Solar</title>
+
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- AUTH -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-box">
+    <div class="auth-logo">
+      <div class="logo-icon">☀️</div>
+      SolarVida
+    </div>
+
+    <div id="loginForm">
+      <h2 class="auth-title">Bem-vindo</h2>
+
+      <div class="auth-group">
+        <label>E-mail</label>
+        <input id="loginEmail" value="demo@solarvida.com"/>
+      </div>
+
+      <div class="auth-group">
+        <label>Senha</label>
+        <input id="loginPwd" type="password" value="demo123"/>
+      </div>
+
+      <p class="auth-error" id="loginError">erro</p>
+      <button class="btn-auth" onclick="doLogin()">entrar</button>
+      <p class="auth-switch"><a onclick="toggleAuth()">criar conta</a></p>
+    </div>
+
+    <div id="registerForm" style="display:none">
+      <h2 class="auth-title">Cadastro</h2>
+
+      <input id="regName" placeholder="nome"/>
+      <input id="regEmail" placeholder="email"/>
+      <input id="regPwd" type="password" placeholder="senha"/>
+
+      <p class="auth-error" id="regError"></p>
+      <button class="btn-auth" onclick="doRegister()">criar</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">☀️</div>
+    SolarVida
+  </div>
+
+  <div class="nav-btns">
+    <button onclick="showView('home')">Início</button>
+    <button onclick="showView('nova')">Nova</button>
+    <button onclick="showView('lista')">Lista</button>
+  </div>
+
+  <div class="user-badge">
+    <span id="userNameBadge">—</span>
+    <button onclick="doLogout()">sair</button>
+  </div>
+</header>
+
+<div class="app">
+  <aside class="sidebar">
+    <div id="simList"></div>
+  </aside>
+
+  <main class="main">
+
+    <div class="view active" id="viewHome">
+      <h1>Home</h1>
+      <div id="recentList"></div>
+    </div>
+
+    <div class="view" id="viewNova">
+      <input id="fNome" placeholder="nome"/>
+      <input id="fConsumo" placeholder="consumo"/>
+      <input id="fFatura" placeholder="fatura"/>
+      <button onclick="salvarSimulacao()">salvar</button>
+    </div>
+
+    <div class="view" id="viewLista">
+      <div id="listaContent"></div>
+    </div>
+
+    <div class="view" id="viewDetalhe">
+      <div id="detalheContent"></div>
+    </div>
+
+  </main>
+</div>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
